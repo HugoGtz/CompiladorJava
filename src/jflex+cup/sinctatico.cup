@@ -1,0 +1,33 @@
+﻿package Example;
+import java.io.*;
+import java_cup.runtime.*;
+action code {:
+ :}
+parser code {:
+public static void main ( String args[] ) throws Exception {
+new parser(new Scanner(new FileReader(args[0]))).parse(); }
+public void syntax_error(Symbol s){
+report_error("\n ERROR SINTÁCTICO \n",null); }
+
+public void report_fatal_error(String message, Object info){
+report_error("",null); }
+:}
+terminal SEMI,INIC, AVANZ, GD, GI,ACTIVO,FNN;
+terminal LPAREN, RPAREN;
+terminal Integer NUMBER;
+non terminal INICIO, instrucciones,codigo, camino;
+
+precedence left AVANZ,GD;
+precedence left GI,ACTIVO;
+/* Gramática */
+/* En esta parte se realizo la defición de la gramática, donde también se asignaron las acciones semanticas */ /* Definción de la estructura general */
+INICIO ::= INIC instrucciones FNN;
+instrucciones ::= instrucciones codigo | codigo;
+codigo::=camino
+     {: System.out.println(";"); :} SEMI;
+exprm ::=  {: System.out.print("AVANZA "); :} AVAN LPAREN NUMBER:n RPAREN {: System.out.print(n+" PASOS"); :}
+	| GDE {: System.out.print("GIRA LA DERECHA "); :}
+	| GIZ {: System.out.print("GIRA LA IZQUIERDA "); :}
+	| ACT {: System.out.print("ACTIVA LED"); :};
+  
+ 

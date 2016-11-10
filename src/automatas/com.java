@@ -5,6 +5,7 @@
  */
 package automatas;
 
+import java.awt.Color;
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -51,6 +52,7 @@ public class com extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         salir = new javax.swing.JButton();
         barra = new javax.swing.JProgressBar();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,6 +123,14 @@ public class com extends javax.swing.JFrame {
         barra.setForeground(new java.awt.Color(33, 150, 243));
         barra.setToolTipText("");
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Analizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -131,7 +141,9 @@ public class com extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(sintax)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(ejecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -164,7 +176,8 @@ public class com extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sintax, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ejecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(barra, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -189,10 +202,26 @@ public class com extends javax.swing.JFrame {
 
     private void sintaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sintaxActionPerformed
         // TODO add your handling code here:
-            String ruta = "/home/hugo/archivo.txt";
+        codigos = codigo.getText();
+            if (codigos.equals("")) {
+                pantalla.setForeground(Color.red); 
+            pantalla.setText("Aun no escribes Codigo.");
+        }else{
+        javax.swing.JFileChooser jF1= new javax.swing.JFileChooser(); 
+String ruta = ""; 
+try{ 
+if(jF1.showSaveDialog(null)==jF1.APPROVE_OPTION){ 
+ruta = jF1.getSelectedFile().getAbsolutePath()+".txt"; 
+//Aqui ya tiens la ruta,,,ahora puedes crear un fichero n esa ruta y escribir lo k kieras... 
+} 
+}catch (Exception ex){ 
+ex.printStackTrace(); 
+} 
+
+       
     File archivo = new File(ruta);
     BufferedWriter bw = null;
-    codigos = codigo.getText();
+    
     barra.setValue(20);
     
     
@@ -218,9 +247,10 @@ public class com extends javax.swing.JFrame {
             Logger.getLogger(com.class.getName()).log(Level.SEVERE, null, ex);
         }
          barra.setValue(100);
+         pantalla.setForeground(Color.blue); 
         pantalla.setText("Archivo .txt creado en "+ ruta);
         
-        
+            }
     }//GEN-LAST:event_sintaxActionPerformed
 
     private void ejecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejecutarActionPerformed
@@ -238,6 +268,10 @@ public class com extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -278,6 +312,7 @@ public class com extends javax.swing.JFrame {
     private javax.swing.JProgressBar barra;
     private javax.swing.JTextArea codigo;
     private javax.swing.JButton ejecutar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

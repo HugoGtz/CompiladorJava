@@ -25,6 +25,8 @@ import java.util.logging.Logger;
 public class com extends javax.swing.JFrame {
     String codigos;
     String system = "";
+    String ruta = ""; 
+    String Robot ="";
     
 
     /**
@@ -107,6 +109,7 @@ public class com extends javax.swing.JFrame {
         ejecutar.setBackground(new java.awt.Color(33, 150, 243));
         ejecutar.setForeground(new java.awt.Color(255, 255, 255));
         ejecutar.setText("Ejecutar");
+        ejecutar.setEnabled(false);
         ejecutar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ejecutarActionPerformed(evt);
@@ -198,7 +201,7 @@ public class com extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(sintax, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(abrir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(barra, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -229,7 +232,7 @@ public class com extends javax.swing.JFrame {
             pantalla.setText(system);
         }else{
         javax.swing.JFileChooser jF1= new javax.swing.JFileChooser();
-String ruta = ""; 
+
 try{ 
 if(jF1.showSaveDialog(null)==jF1.APPROVE_OPTION){ 
 ruta = jF1.getSelectedFile().getAbsolutePath(); 
@@ -293,7 +296,11 @@ ex.printStackTrace();
 
     private void ejecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejecutarActionPerformed
         // TODO add your handling code here:
- 
+        int log;
+        
+        
+        
+        
    
     }//GEN-LAST:event_ejecutarActionPerformed
 
@@ -304,29 +311,65 @@ ex.printStackTrace();
 
     private void analizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analizarActionPerformed
         // TODO add your handling code here:
+        Robot = "";
+        if (ruta!="") {
+            
+        
+        
 try {  
            
-            
+            String command = "java Example/parser "+ruta;
+          
+           // String [] cmd = {"java","Example/parser",ruta};
             //Process p2 = Runtime.getRuntime().exec("javac Scanner.java");
-           Process p2=Runtime.getRuntime().exec("javac Scanner.java",null, new File("/home/hugo/NetBeansProjects/Automatas"));
-            BufferedReader in = new BufferedReader(  
+           Process p2=Runtime.getRuntime().exec(command,null, new File("/home/hugo/NetBeansProjects/Automatas/robot"));
+           p2.waitFor();
+ 
+           BufferedReader in = new BufferedReader(  
                                 new InputStreamReader(p2.getInputStream()));  
+           
             String line = null;  
-            while ((line = in.readLine()) != null) {  
-                system += line+"\n"; 
-            }  
+            system += "Comando Ejecutado en la consola: "+command+" \n";
             pantalla.setText(system);
-        } catch (IOException e) {  
-            e.printStackTrace();  
+            while ((line = in.readLine()) != null) {  
+                if (line.trim().equals("")) {
+            // empty line
+        } else {
+           Robot += line +"\n"; 
         }
+                
+            }  
+            system += Robot;
+                            
+
+        } catch (IOException e) {  
+            system += e; 
+        }   catch (InterruptedException ex) {
+                system += ex;
+            }
+
+            if (Robot!="") {
+                          pantalla.setText(system);
+                          ejecutar.setEnabled(true);
+                          system+= "Ahora puede ejecutar su codigo";
+                          pantalla.setText(system);
+                          
+                          
+            }else{
+                
+            }
+        }else{
+            system += "Aun no guarda o abre un archivo \n";
+            pantalla.setText(system);
+        }
+        
         
 
     }//GEN-LAST:event_analizarActionPerformed
 
     private void abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirActionPerformed
         // TODO add your handling code here:
-                javax.swing.JFileChooser jF1= new javax.swing.JFileChooser(); 
-String ruta = ""; 
+                javax.swing.JFileChooser jF1= new javax.swing.JFileChooser();  
 try{ 
 if(jF1.showSaveDialog(null)==jF1.APPROVE_OPTION){ 
 ruta = jF1.getSelectedFile().getAbsolutePath(); 

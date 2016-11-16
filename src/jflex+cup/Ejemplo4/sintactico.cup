@@ -1,0 +1,38 @@
+package Example;// Especificación del paquete e Importaciones
+import java.io.*;
+import java_cup.runtime.*;
+action code {:
+/*CODIGO DE JAVA*/ :}
+parser code//Preliminares para instalar y usar el escaner
+{:
+public static void main ( String args[] ) throws Exception {
+new parser(new Scanner(new FileReader(args[0]))).parse(); }
+public void syntax_error(Symbol s){
+report_error("\n ERROR SINTÁCTICO \n",null); }
+
+public void report_fatal_error(String message, Object info){
+report_error("",null); }
+:}
+	/* Terminales sin atributo */
+terminal SEMI, INIC, AVAN, GDE, GIZ, ACT, TERM;
+terminal LPAREN, RPAREN;
+	/* Terminales con atributo asociado */
+terminal Integer NUMBER;
+	/* No terminales sin atributo */
+non terminal INICI, expr_list, expr_part, exprm;
+	/* No terminales con atributo asociado */
+/*non terminal Integer expr;*/
+	/* Precedencias */
+precedence left AVAN, GDE;
+precedence left GIZ, ACT;
+
+	/* Gramática */
+INICI ::= INIC expr_list TERM;
+
+expr_list ::= expr_list expr_part | expr_part;
+expr_part ::= exprm
+{: System.out.println(";"); :} SEMI;
+exprm ::=  {: System.out.print("AVANZA "); :} AVAN LPAREN NUMBER:n RPAREN {: System.out.print(n+" PASOS"); :}
+	| GDE {: System.out.print("GIRA LA DERECHA "); :}
+	| GIZ {: System.out.print("GIRA LA IZQUIERDA "); :}
+	| ACT {: System.out.print("ACTIVA LED"); :};

@@ -285,7 +285,7 @@ ex.printStackTrace();
                 wait(1000);
             } catch (Exception e) {}
          pantalla.setForeground(Color.blue); 
-         system += "Archivo .txt guardado en "+ruta+" n";
+         system += "Archivo .txt guardado en "+ruta+" \n";
         pantalla.setText(system);
         
             }
@@ -307,9 +307,8 @@ ex.printStackTrace();
 try {  
            
             
-           // Process p = Runtime.getRuntime().exec("");
-            Process p2=Runtime.getRuntime().exec("dir",
-        null, new File("/home/hugo/NetBeansProjects/Automatas/src/jflex+cup"));
+            //Process p2 = Runtime.getRuntime().exec("javac Scanner.java");
+           Process p2=Runtime.getRuntime().exec("javac Scanner.java",null, new File("/home/hugo/NetBeansProjects/Automatas"));
             BufferedReader in = new BufferedReader(  
                                 new InputStreamReader(p2.getInputStream()));  
             String line = null;  
@@ -320,6 +319,7 @@ try {
         } catch (IOException e) {  
             e.printStackTrace();  
         }
+        System.out.println(system);
 
     }//GEN-LAST:event_analizarActionPerformed
 

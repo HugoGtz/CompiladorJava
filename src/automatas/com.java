@@ -232,7 +232,7 @@ public class com extends javax.swing.JFrame {
 String ruta = ""; 
 try{ 
 if(jF1.showSaveDialog(null)==jF1.APPROVE_OPTION){ 
-ruta = jF1.getSelectedFile().getAbsolutePath()+".txt"; 
+ruta = jF1.getSelectedFile().getAbsolutePath(); 
 //Aqui ya tiens la ruta,,,ahora puedes crear un fichero n esa ruta y escribir lo k kieras... 
 } 
 }catch (Exception ex){ 
@@ -285,7 +285,7 @@ ex.printStackTrace();
                 wait(1000);
             } catch (Exception e) {}
          pantalla.setForeground(Color.blue); 
-         system += "Archivo .txt guardado en "+ruta+"/n";
+         system += "Archivo .txt guardado en "+ruta+" n";
         pantalla.setText(system);
         
             }
@@ -307,10 +307,11 @@ ex.printStackTrace();
 try {  
            
             
-            Process p = Runtime.getRuntime().exec("dir");
-            Process p2 = Runtime.getRuntime().exec("pwd");
+           // Process p = Runtime.getRuntime().exec("");
+            Process p2=Runtime.getRuntime().exec("dir",
+        null, new File("/home/hugo/NetBeansProjects/Automatas/src/jflex+cup"));
             BufferedReader in = new BufferedReader(  
-                                new InputStreamReader(p.getInputStream()));  
+                                new InputStreamReader(p2.getInputStream()));  
             String line = null;  
             while ((line = in.readLine()) != null) {  
                 system += line+"\n"; 

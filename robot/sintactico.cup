@@ -1,0 +1,72 @@
+package Example; // Especificación del paquete Importaciones
+import java.io.*;
+import java_cup.runtime.*;
+
+action code {:/*CODIGO DE JAVA*/ :}
+parser code //Preliminares para instalar y usar el escaner
+
+{:public static void main ( String args[] ) throws Exception 
+	{
+		new parser(new Scanner(new FileReader(args[0]))).parse(); 
+	}
+
+public void syntax_error(Symbol s)
+{
+	report_error("\n ERROR SINTÁCTICO \n",null); 
+}
+public void report_fatal_error(String message, Object info){
+report_error("",null); }
+:}
+
+/* Terminales sin atributo */
+terminal Semi, Inicio, Avanza, GLeft, GRight, Activa, Fin;
+terminal LPAREN, RPAREN;
+
+/* Terminales con atributo asociado */
+terminal Integer NUMBER;
+
+/* No terminales sin atributo */
+non terminal INICIOPROGRAMA, expr_list, expr_part, exprm;
+
+/* No terminales con atributo asociado */
+/*non terminal Integer expr;/*
+
+/* Precedencias */
+precedence left Avanza, GRight;
+precedence left GLeft, Activa;
+
+/* Gramática */
+INICIOPROGRAMA ::= Inicio expr_list Fin;
+
+expr_list ::= expr_list expr_part | expr_part;
+expr_part ::= exprm
+{: System.out.println(";"); :} Semi;
+exprm ::= Avanza LPAREN NUMBER:n RPAREN {: System.out.print("EL ROBOT AVANZO "+n+" PASOS"); :}
+	|GRight {: System.out.print("EL ROBOT GIRA A LA DERECHA"); :}
+	|GLeft	{: System.out.print("EL ROBOT GIRA A LA IZQUIERDA"); :}	
+	|Activa {: System.out.print("EL ROBOT ACTIVO SU LED"); :};		
+
+/*{: System.out.println(" = "+e+";"); :} Semi;
+expr ::= NUMBER:n
+{: RESULT=n; :}
+
+| expr:l Inicio expr:r
+{: RESULT=new Integer(l.intValue() + r.intValue()); :}
+
+| expr:l Avanza expr:r
+{: RESULT=new Integer(l.intValue() - r.intValue()); :}
+
+| expr:l GLeft expr:r
+{: RESULT=new Integer(l.intValue() * r.intValue()); :}
+
+| expr:l GRight expr:r
+{: RESULT=new Integer(l.intValue() / r.intValue()); :}
+
+| expr:l Activa expr:r
+{: RESULT=new Integer(l.intValue() / r.intValue()); :}
+
+| expr:l Fin expr:r
+{: RESULT=new Integer(l.intValue() / r.intValue()); :}
+
+| LPAREN expr:e RPAREN
+{: RESULT=e; :} ;*/

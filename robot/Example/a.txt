@@ -1,0 +1,7 @@
+INICIO
+AVANZA(10);
+GLEFT;
+GRIGHT;
+ACTIVA;
+avanza;
+FIN

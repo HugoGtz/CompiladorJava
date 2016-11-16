@@ -319,7 +319,7 @@ try {
         } catch (IOException e) {  
             e.printStackTrace();  
         }
-        System.out.println(system);
+        
 
     }//GEN-LAST:event_analizarActionPerformed
 

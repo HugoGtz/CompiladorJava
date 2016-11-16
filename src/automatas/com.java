@@ -7,11 +7,15 @@ package automatas;
 
 import java.awt.Color;
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -20,6 +24,7 @@ import java.util.logging.Logger;
  */
 public class com extends javax.swing.JFrame {
     String codigos;
+    String system = "";
     
 
     /**
@@ -52,7 +57,8 @@ public class com extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         salir = new javax.swing.JButton();
         barra = new javax.swing.JProgressBar();
-        jButton1 = new javax.swing.JButton();
+        analizar = new javax.swing.JButton();
+        abrir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,11 +129,19 @@ public class com extends javax.swing.JFrame {
         barra.setForeground(new java.awt.Color(33, 150, 243));
         barra.setToolTipText("");
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Analizar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        analizar.setBackground(new java.awt.Color(255, 255, 255));
+        analizar.setText("Analizar");
+        analizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                analizarActionPerformed(evt);
+            }
+        });
+
+        abrir.setBackground(new java.awt.Color(255, 255, 255));
+        abrir.setText("Abrir");
+        abrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrirActionPerformed(evt);
             }
         });
 
@@ -137,18 +151,21 @@ public class com extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(68, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(sintax)
+                        .addComponent(sintax, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(abrir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(ejecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(analizar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(salir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(ejecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -173,11 +190,14 @@ public class com extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sintax, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ejecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ejecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(analizar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(sintax, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(abrir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(barra, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -205,9 +225,10 @@ public class com extends javax.swing.JFrame {
         codigos = codigo.getText();
             if (codigos.equals("")) {
                 pantalla.setForeground(Color.red); 
-            pantalla.setText("Aun no escribes Codigo.");
+                system += "Aun no escribes Codigo./n";
+            pantalla.setText(system);
         }else{
-        javax.swing.JFileChooser jF1= new javax.swing.JFileChooser(); 
+        javax.swing.JFileChooser jF1= new javax.swing.JFileChooser();
 String ruta = ""; 
 try{ 
 if(jF1.showSaveDialog(null)==jF1.APPROVE_OPTION){ 
@@ -223,6 +244,9 @@ ex.printStackTrace();
     BufferedWriter bw = null;
     
     barra.setValue(20);
+    try {
+                wait(1000);
+            } catch (Exception e) {}
     
     
         if (archivo.exists()) {
@@ -231,36 +255,45 @@ ex.printStackTrace();
         try {
             bw = new BufferedWriter(new FileWriter(archivo));
             barra.setValue(40);
+            try {
+                wait(1000);
+            } catch (Exception e) {}
+            
         } catch (IOException ex) {
             Logger.getLogger(com.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             bw.write(codigos);
             barra.setValue(70);
+            try {
+                wait(1000);
+            } catch (Exception e) {}
         } catch (IOException ex) {
             Logger.getLogger(com.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             bw.close();
             barra.setValue(90);
+            try {
+                wait(1000);
+            } catch (Exception e) {}
         } catch (IOException ex) {
             Logger.getLogger(com.class.getName()).log(Level.SEVERE, null, ex);
         }
          barra.setValue(100);
+         try {
+                wait(1000);
+            } catch (Exception e) {}
          pantalla.setForeground(Color.blue); 
-        pantalla.setText("Archivo .txt creado en "+ ruta);
+         system += "Archivo .txt guardado en "+ruta+"/n";
+        pantalla.setText(system);
         
             }
     }//GEN-LAST:event_sintaxActionPerformed
 
     private void ejecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejecutarActionPerformed
         // TODO add your handling code here:
-    try {
-	String cmd = "subl"; //Comando de apagado en linux
-	Runtime.getRuntime().exec(cmd); 
-} catch (IOException ioe) {
-	System.out.println (ioe);
-}
+ 
    
     }//GEN-LAST:event_ejecutarActionPerformed
 
@@ -269,9 +302,63 @@ ex.printStackTrace();
         System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void analizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analizarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+try {  
+           
+            
+            Process p = Runtime.getRuntime().exec("dir");
+            Process p2 = Runtime.getRuntime().exec("pwd");
+            BufferedReader in = new BufferedReader(  
+                                new InputStreamReader(p.getInputStream()));  
+            String line = null;  
+            while ((line = in.readLine()) != null) {  
+                system += line+"\n"; 
+            }  
+            pantalla.setText(system);
+        } catch (IOException e) {  
+            e.printStackTrace();  
+        }
+
+    }//GEN-LAST:event_analizarActionPerformed
+
+    private void abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirActionPerformed
+        // TODO add your handling code here:
+                javax.swing.JFileChooser jF1= new javax.swing.JFileChooser(); 
+String ruta = ""; 
+try{ 
+if(jF1.showSaveDialog(null)==jF1.APPROVE_OPTION){ 
+ruta = jF1.getSelectedFile().getAbsolutePath(); 
+//Aqui ya tiens la ruta,,,ahora puedes crear un fichero n esa ruta y escribir lo k kieras... 
+} 
+}catch (Exception ex){ 
+ex.printStackTrace(); 
+} 
+String cadena;
+String texto = "";
+        FileReader f = null;
+        try {
+            f = new FileReader(ruta);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(com.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        BufferedReader b = new BufferedReader(f);
+        try {
+            while((cadena = b.readLine())!=null) {
+                texto += cadena+"\n";
+            }
+            codigo.setText(texto);
+        } catch (IOException ex) {
+            Logger.getLogger(com.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            b.close();
+        } catch (IOException ex) {
+            Logger.getLogger(com.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        system += "Se a cargado con exito "+ruta+"\n";
+        pantalla.setText(system);
+    }//GEN-LAST:event_abrirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -309,10 +396,11 @@ ex.printStackTrace();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton abrir;
+    private javax.swing.JButton analizar;
     private javax.swing.JProgressBar barra;
     private javax.swing.JTextArea codigo;
     private javax.swing.JButton ejecutar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

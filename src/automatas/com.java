@@ -50,7 +50,8 @@ public class com extends javax.swing.JFrame {
         codigo = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         pantalla = new javax.swing.JTextPane();
         sintax = new javax.swing.JButton();
@@ -61,151 +62,129 @@ public class com extends javax.swing.JFrame {
         barra = new javax.swing.JProgressBar();
         analizar = new javax.swing.JButton();
         abrir = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(226, 241, 252));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         codigo.setColumns(20);
         codigo.setRows(5);
         jScrollPane1.setViewportView(codigo);
 
-        jPanel2.setBackground(new java.awt.Color(66, 165, 245));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 340, 248));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, new java.awt.Color(0, 0, 0)));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 319, 12));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Movimientos del robot.");
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/oie_23153249Px6lTSG1.png"))); // NOI18N
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel2)
-                .addContainerGap(133, Short.MAX_VALUE))
-            .addComponent(jSeparator1)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(165, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(30, 30, 30))
-        );
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/piso.jpg"))); // NOI18N
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 250));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 95, -1, 250));
 
         jScrollPane2.setViewportView(pantalla);
 
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 448, 780, 140));
+
         sintax.setBackground(new java.awt.Color(255, 255, 255));
-        sintax.setText("Guardar");
+        sintax.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/guardar.png"))); // NOI18N
         sintax.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sintaxActionPerformed(evt);
             }
         });
+        jPanel1.add(sintax, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 50, 50));
 
-        ejecutar.setBackground(new java.awt.Color(33, 150, 243));
+        ejecutar.setBackground(new java.awt.Color(242, 249, 255));
         ejecutar.setForeground(new java.awt.Color(255, 255, 255));
-        ejecutar.setText("Ejecutar");
+        ejecutar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/ejecutar.png"))); // NOI18N
         ejecutar.setEnabled(false);
         ejecutar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ejecutarActionPerformed(evt);
             }
         });
+        jPanel1.add(ejecutar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 350, 50, 50));
 
-        jLabel1.setText("Edita tu codígo.");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Edita su codígo.");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Robot Automata.");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 12, -1, -1));
 
         salir.setBackground(new java.awt.Color(255, 255, 255));
-        salir.setText("Salir");
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/salir.png"))); // NOI18N
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirActionPerformed(evt);
             }
         });
+        jPanel1.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 350, 50, 50));
 
         barra.setForeground(new java.awt.Color(33, 150, 243));
         barra.setToolTipText("");
+        jPanel1.add(barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 780, 29));
 
         analizar.setBackground(new java.awt.Color(255, 255, 255));
-        analizar.setText("Analizar");
+        analizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/analizar.png"))); // NOI18N
         analizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 analizarActionPerformed(evt);
             }
         });
+        jPanel1.add(analizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 50, 50));
 
         abrir.setBackground(new java.awt.Color(255, 255, 255));
-        abrir.setText("Abrir");
+        abrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/abrir.png"))); // NOI18N
         abrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 abrirActionPerformed(evt);
             }
         });
+        jPanel1.add(abrir, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 50, 50));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(68, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(sintax, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(abrir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(analizar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(ejecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(109, 109, 109)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(197, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(230, 230, 230))
-            .addComponent(barra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(ejecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(analizar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(sintax, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(abrir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(barra, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Guardar");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 60, 20));
+
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Abrir");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, -1, -1));
+
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Analizar");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, -1, -1));
+
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Ejecutar.");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, -1, -1));
+
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Salir.");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, -1, -1));
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Movimientos de wall-e");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, -1, 20));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/fondo.png"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -160, 780, 590));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -215,171 +194,25 @@ public class com extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void sintaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sintaxActionPerformed
-        // TODO add your handling code here:
-        codigos = codigo.getText();
-            if (codigos.equals("")) {
-                pantalla.setForeground(Color.red); 
-                system += "Aun no escribes Codigo./n";
-            pantalla.setText(system);
-        }else{
-        javax.swing.JFileChooser jF1= new javax.swing.JFileChooser();
-
-try{ 
-if(jF1.showSaveDialog(null)==jF1.APPROVE_OPTION){ 
-ruta = jF1.getSelectedFile().getAbsolutePath(); 
-//Aqui ya tiens la ruta,,,ahora puedes crear un fichero n esa ruta y escribir lo k kieras... 
-} 
-}catch (Exception ex){ 
-ex.printStackTrace(); 
-} 
-
-       
-    File archivo = new File(ruta);
-    BufferedWriter bw = null;
-    
-    barra.setValue(20);
-    try {
-                wait(1000);
-            } catch (Exception e) {}
-    
-    
-        if (archivo.exists()) {
-            archivo.delete();
-        }
-        try {
-            bw = new BufferedWriter(new FileWriter(archivo));
-            barra.setValue(40);
-            try {
-                wait(1000);
-            } catch (Exception e) {}
-            
-        } catch (IOException ex) {
-            Logger.getLogger(com.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            bw.write(codigos);
-            barra.setValue(70);
-            try {
-                wait(1000);
-            } catch (Exception e) {}
-        } catch (IOException ex) {
-            Logger.getLogger(com.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            bw.close();
-            barra.setValue(90);
-            try {
-                wait(1000);
-            } catch (Exception e) {}
-        } catch (IOException ex) {
-            Logger.getLogger(com.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         barra.setValue(100);
-         try {
-                wait(1000);
-            } catch (Exception e) {}
-         pantalla.setForeground(Color.blue); 
-         system += "Archivo .txt guardado en "+ruta+" \n";
-        pantalla.setText(system);
-        
-            }
-    }//GEN-LAST:event_sintaxActionPerformed
-
-    private void ejecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejecutarActionPerformed
-        // TODO add your handling code here:
-        int log;
-        
-        
-        
-        
-   
-    }//GEN-LAST:event_ejecutarActionPerformed
-
-    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_salirActionPerformed
-
-    private void analizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analizarActionPerformed
-        // TODO add your handling code here:
-        Robot = "";
-        if (ruta!="") {
-            
-        
-        
-try {  
-           
-            String command = "java Example/parser "+ruta;
-          
-           // String [] cmd = {"java","Example/parser",ruta};
-            //Process p2 = Runtime.getRuntime().exec("javac Scanner.java");
-           Process p2=Runtime.getRuntime().exec(command,null, new File("/home/hugo/NetBeansProjects/Automatas/robot"));
-           p2.waitFor();
- 
-           BufferedReader in = new BufferedReader(  
-                                new InputStreamReader(p2.getInputStream()));  
-           
-            String line = null;  
-            system += "Comando Ejecutado en la consola: "+command+" \n";
-            pantalla.setText(system);
-            while ((line = in.readLine()) != null) {  
-                if (line.trim().equals("")) {
-            // empty line
-        } else {
-           Robot += line +"\n"; 
-        }
-                
-            }  
-            system += Robot;
-                            
-
-        } catch (IOException e) {  
-            system += e; 
-        }   catch (InterruptedException ex) {
-                system += ex;
-            }
-
-            if (Robot!="") {
-                          pantalla.setText(system);
-                          ejecutar.setEnabled(true);
-                          system+= "Ahora puede ejecutar su codigo";
-                          pantalla.setText(system);
-                          
-                          
-            }else{
-                
-            }
-        }else{
-            system += "Aun no guarda o abre un archivo \n";
-            pantalla.setText(system);
-        }
-        
-        
-
-    }//GEN-LAST:event_analizarActionPerformed
-
     private void abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirActionPerformed
         // TODO add your handling code here:
-                javax.swing.JFileChooser jF1= new javax.swing.JFileChooser();  
-try{ 
-if(jF1.showSaveDialog(null)==jF1.APPROVE_OPTION){ 
-ruta = jF1.getSelectedFile().getAbsolutePath(); 
-//Aqui ya tiens la ruta,,,ahora puedes crear un fichero n esa ruta y escribir lo k kieras... 
-} 
-}catch (Exception ex){ 
-ex.printStackTrace(); 
-} 
-String cadena;
-String texto = "";
+        javax.swing.JFileChooser jF1= new javax.swing.JFileChooser();
+        try{
+            if(jF1.showSaveDialog(null)==jF1.APPROVE_OPTION){
+                ruta = jF1.getSelectedFile().getAbsolutePath();
+                //Aqui ya tiens la ruta,,,ahora puedes crear un fichero n esa ruta y escribir lo k kieras...
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        String cadena;
+        String texto = "";
         FileReader f = null;
         try {
             f = new FileReader(ruta);
@@ -403,6 +236,136 @@ String texto = "";
         system += "Se a cargado con exito "+ruta+"\n";
         pantalla.setText(system);
     }//GEN-LAST:event_abrirActionPerformed
+
+    private void analizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analizarActionPerformed
+        // TODO add your handling code here:
+        Robot = "";
+        if (ruta!="") {
+
+            try {
+
+                String command = "java Example/parser "+ruta;
+
+                // String [] cmd = {"java","Example/parser",ruta};
+                //Process p2 = Runtime.getRuntime().exec("javac Scanner.java");
+                Process p2=Runtime.getRuntime().exec(command,null, new File("/home/hugo/NetBeansProjects/Automatas/robot"));
+                p2.waitFor();
+
+                BufferedReader in = new BufferedReader(
+                    new InputStreamReader(p2.getInputStream()));
+
+                String line = null;
+                system += "Comando Ejecutado en la consola: "+command+" \n";
+                pantalla.setText(system);
+                while ((line = in.readLine()) != null) {
+                    if (line.trim().equals("")) {
+                        // empty line
+                    } else {
+                        Robot += line +"\n";
+                    }
+
+                }
+                system += Robot;
+
+            } catch (IOException e) {
+                system += e;
+            }   catch (InterruptedException ex) {
+                system += ex;
+            }
+
+            if (Robot!="") {
+                pantalla.setText(system);
+                ejecutar.setEnabled(true);
+                system+= "Ahora puede ejecutar su codigo";
+                pantalla.setText(system);
+
+            }else{
+
+            }
+        }else{
+            system += "Aun no guarda o abre un archivo \n";
+            pantalla.setText(system);
+        }
+    }//GEN-LAST:event_analizarActionPerformed
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_salirActionPerformed
+
+    private void ejecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejecutarActionPerformed
+        // TODO add your handling code here:
+        int log;
+    }//GEN-LAST:event_ejecutarActionPerformed
+
+    private void sintaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sintaxActionPerformed
+        // TODO add your handling code here:
+        codigos = codigo.getText();
+        if (codigos.equals("")) {
+            pantalla.setForeground(Color.red);
+            system += "Aun no escribes Codigo./n";
+            pantalla.setText(system);
+        }else{
+            javax.swing.JFileChooser jF1= new javax.swing.JFileChooser();
+
+            try{
+                if(jF1.showSaveDialog(null)==jF1.APPROVE_OPTION){
+                    ruta = jF1.getSelectedFile().getAbsolutePath();
+                    //Aqui ya tiens la ruta,,,ahora puedes crear un fichero n esa ruta y escribir lo k kieras...
+                }
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
+
+            File archivo = new File(ruta);
+            BufferedWriter bw = null;
+
+            barra.setValue(20);
+            try {
+                wait(1000);
+            } catch (Exception e) {}
+
+            if (archivo.exists()) {
+                archivo.delete();
+            }
+            try {
+                bw = new BufferedWriter(new FileWriter(archivo));
+                barra.setValue(40);
+                try {
+                    wait(1000);
+                } catch (Exception e) {}
+
+            } catch (IOException ex) {
+                Logger.getLogger(com.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                bw.write(codigos);
+                barra.setValue(70);
+                try {
+                    wait(1000);
+                } catch (Exception e) {}
+            } catch (IOException ex) {
+                Logger.getLogger(com.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                bw.close();
+                barra.setValue(90);
+                try {
+                    wait(1000);
+                } catch (Exception e) {}
+            } catch (IOException ex) {
+                Logger.getLogger(com.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            barra.setValue(100);
+            try {
+                wait(1000);
+            } catch (Exception e) {}
+            pantalla.setForeground(Color.blue);
+            system += "Archivo .txt guardado en "+ruta+" \n";
+            pantalla.setText(system);
+
+        }
+    }//GEN-LAST:event_sintaxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -446,8 +409,16 @@ String texto = "";
     private javax.swing.JTextArea codigo;
     private javax.swing.JButton ejecutar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -1,0 +1,51 @@
+package Example;// Especificación del paquete e Importaciones
+import java.io.*;
+import java_cup.runtime.*;
+action code {:
+/*CODIGO DE JAVA*/ :}
+parser code//Preliminares para instalar y usar el escaner
+{:
+	public static void main ( String args[] ) throws Exception {
+	new parser(new Scanner(new FileReader(args[0]))).parse(); }
+
+	public void syntax_error(Symbol s){
+		report_error("Error en linea: "+ s.left+", columna: "+s.right,null);
+	}
+
+	public void report_fatal_error(String message, Object info){
+		report_error("Codigo de error: " + info.toString(), null);
+		if ("#0".equals(info.toString())) {report_error("Error de sintaxis: Falta FIN", null);}
+		if ("#4".equals(info.toString())) {report_error("Error de sintaxis: Falta punto y coma o falta INICIO", null);}
+		if ("#5".equals(info.toString())) {report_error("Error de sintaxis: Falta punto y coma", null);}
+		if ("#6".equals(info.toString())) {report_error("Error de sintaxis: Falta punto y coma", null);}
+		if ("#7".equals(info.toString())) {report_error("Error de sintaxis: Falta punto y coma", null);}
+		if ("#8".equals(info.toString())) {report_error("Error de sintaxis: Falta punto y coma", null);}
+		if ("#9".equals(info.toString())) {report_error("Error de sintaxis: Extructura invalida", null);} //avanza
+		if ("#10".equals(info.toString())) {report_error("Error de sintaxis: Falta nuermero de pasos o caracter invalido", null);}
+		if ("#11".equals(info.toString())) {report_error("Error de sintaxis: Extructura invalida", null);}
+		if ("#2".equals(info.toString())) {report_error("Error de sintaxis: Extructura invalida", null);}
+	}
+
+:}
+	/* Terminales sin atributo */
+terminal SEMI, INIC, AVAN, GDE, GIZ, ACT, TERM;
+terminal LPAREN, RPAREN;
+	/* Terminales con atributo asociado */
+terminal Integer NUMBER;
+	/* No terminales sin atributo */
+non terminal INICI, expr_list, expr_part, exprm;
+	/* No terminales con atributo asociado */
+	/*non terminal Integer expr;*/
+	/* Precedencias */
+precedence left AVAN, GDE;
+precedence left GIZ, ACT;
+
+	/* Gramática */
+INICI ::= INIC expr_list TERM;
+
+expr_list ::= expr_list expr_part | expr_part;
+expr_part ::= exprm;
+exprm ::= AVAN LPAREN NUMBER:n RPAREN SEMI {: System.out.print("Avanza: "+n); :}
+	| GDE SEMI{: System.out.print("GDerecha"); :}
+	| GIZ SEMI{: System.out.print("GIzquierda"); :}
+	| ACT SEMI{: System.out.print("Activa"); :};

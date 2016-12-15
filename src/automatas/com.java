@@ -246,7 +246,7 @@ public class com extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-
+    // Metodos de movimientos
     public static int buscarn(){
         int numero = 0;
         for (int i = 0; i < 4; i++) {
@@ -455,6 +455,11 @@ public class com extends javax.swing.JFrame {
          
          return false;
      }
+           public void restablecer(){
+            walle.setLayout(null);
+            com.walle.setLocation(0,0);
+            jLabel5.add(walle);
+    }
     public static void activa() throws IOException{
         int buscan = buscarn();
          String imageName = null;
@@ -521,31 +526,15 @@ public class com extends javax.swing.JFrame {
         
      }
     
+    /// Metodos de manejo de archivos
+    
     public static void erros(String t){
         system += t;
          pantalla.setText(system);
      }
-    public File busca(){
-         javax.swing.JFileChooser jF1= new javax.swing.JFileChooser();
-        try{
-            if(jF1.showSaveDialog(null)==jF1.APPROVE_OPTION){
-               
-                File path = jF1.getSelectedFile();
-                system += path.getAbsolutePath()+" : ";
-                return path;
-                //Aqui ya tiens la ruta,,,ahora puedes crear un fichero n esa ruta y escribir lo k kieras...
-            }
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
-         return null;
-    }
     
-    public void restablecer(){
-            walle.setLayout(null);
-            com.walle.setLocation(0,0);
-            jLabel5.add(walle);
-    }
+    
+   
    
     public void compilar(File path){
             //Guarda el texto del cuadro antes de seguir, en caso de un error no entrara al if 
@@ -570,6 +559,21 @@ public class com extends javax.swing.JFrame {
              
         }
    
+    public File busca(){
+         javax.swing.JFileChooser jF1= new javax.swing.JFileChooser();
+        try{
+            if(jF1.showSaveDialog(null)==jF1.APPROVE_OPTION){
+               
+                File path = jF1.getSelectedFile();
+                system += path.getAbsolutePath()+" : ";
+                return path;
+                //Aqui ya tiens la ruta,,,ahora puedes crear un fichero n esa ruta y escribir lo k kieras...
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+         return null;
+    }
     private void abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirActionPerformed
         // TODO add your handling code here:
         file = busca();

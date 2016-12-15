@@ -182,17 +182,7 @@ class CUP$parser$actions {
             CUP$parser$result = new java_cup.runtime.Symbol(4/*exprm*/, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-0)).right, RESULT);
             if (com.ejec) {
                  com.GI();
-                               new Thread() {
-            public void run() {
-                try {
-                    
-                        Thread.sleep(3000);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }.start();
+  
             }else{
              com.system += "GIzquierda \n";
            }
@@ -209,17 +199,7 @@ class CUP$parser$actions {
             CUP$parser$result = new java_cup.runtime.Symbol(4/*exprm*/, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-0)).right, RESULT);
             if (com.ejec) {
                  com.GD();
-                               new Thread() {
-            public void run() {
-                try {
-                    
-                        Thread.sleep(3000);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }.start();
+   
             }else{
              com.system += "GDerecha \n";
            }
@@ -234,19 +214,12 @@ class CUP$parser$actions {
             int nright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
             Integer n = (Integer)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
             if (com.ejec) {
-                com.avanza(n);
-                    new Thread() {
-            public void run() {
-                try {
-                    
-                        Thread.sleep(3000);
+                
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }.start();
+                com.avanza(n);
+
             }else{
+                
               com.system += "Avanza: "+n+"\n";
             }
             

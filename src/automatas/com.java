@@ -20,26 +20,29 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 /**
  *
  * @author hugo
  */
 public class com extends javax.swing.JFrame {
-
+        // enlace de metodo para parse.java
     static void pantalla(String error_lexico_en_el_token_de_apertura_o_ci, Object object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+        // enlace de metodo para parse.java
     static void erros(String error, Object object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+        // Declaracion de variables globales de las cuales algunas se utilizan en parse.java
     public static String system = "",walleP="/home/hugo/NetBeansProjects/Automatas/src/assets/walle0.png";
     String ruta = "",Robot ="",codigos; 
     public File file;
     public static boolean ejec = false,completo = false,limit,x=true,y=false;
     public static int movimientos,delay = 1000,d,wX=0,wY=0;
     public static Icon icon;
-    
+
+    // vector de orientacion del robot.
     public static int xyz [] = new int [4];
     
     
@@ -47,8 +50,10 @@ public class com extends javax.swing.JFrame {
     /*
      * Creates new form com
      */
+        //constructor de la clase.
     public com() {
         initComponents();
+        // incializamos los valores del vector con 1 en la posicion 0 para establecer por determinada la derecha.
         xyz[0]=1;
         xyz[1]=0;
         xyz[2]=0;
@@ -96,11 +101,11 @@ public class com extends javax.swing.JFrame {
         jDialog1.getContentPane().setLayout(jDialog1Layout);
         jDialog1Layout.setHorizontalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 559, Short.MAX_VALUE)
         );
         jDialog1Layout.setVerticalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 381, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -119,7 +124,7 @@ public class com extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         walle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/walle0.png"))); // NOI18N
-        jPanel2.add(walle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
+        jPanel2.add(walle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/piso.jpg"))); // NOI18N
         jLabel5.setIconTextGap(5);
@@ -256,13 +261,14 @@ public class com extends javax.swing.JFrame {
         }
         return numero;
     }
-  
+            //Metodo para cambiar la imagen en base a la orientacion que tenga.
     public static String cambia(String imageName){
          ImageIcon icon2 = new ImageIcon(imageName);
                  icon2.getImage().flush();
                  walle.setIcon(icon2);
                  return null;
     }
+            // metodo para girar la direccion indicada.
     public static int gira(int n){
         String imageName = null;
         switch(n){
@@ -291,6 +297,8 @@ public class com extends javax.swing.JFrame {
             
         return 0;
     }
+    // Metodo para cambiar la posicion en los giros a la derecha dependiendo la ubicacion en la que se encuentre.
+
     public static void GD(){
          for (int i = 0; i < 4; i++) {
             
@@ -330,7 +338,7 @@ public class com extends javax.swing.JFrame {
              System.out.println(xyz);
          }
      }
-     
+    // Metodo para cambiar la posicion en los giros a la izquierda dependiendo la ubicacion en la que se encuentre.
      public static void GI(){
          for (int i = 0; i < 4; i++) {
              if (xyz[i]==1) {
@@ -362,6 +370,7 @@ public class com extends javax.swing.JFrame {
          }
      }
      
+     // Metodo para inciar procesos de giro a la derecha.
     public static boolean derecha(int wX, int wY,int n){
            
          wX = walle.getX();
@@ -385,6 +394,7 @@ public class com extends javax.swing.JFrame {
          
          return false;
      }
+     // Metodo para inciar procesos de giro hacia abajo.
       public static boolean abajo(int wX, int wY,int n){
            
          wX = walle.getX();
@@ -408,6 +418,7 @@ public class com extends javax.swing.JFrame {
          
          return false;
      }
+          // Metodo para inciar procesos de giro hacia izquierda.
         public static boolean izquierda(int wX, int wY,int n){
            
          wX = walle.getX();
@@ -431,7 +442,8 @@ public class com extends javax.swing.JFrame {
          
          return false;
      }
-        
+             // Metodo para inciar procesos de giro hacia arriba.
+
           public static boolean arriba(int wX, int wY,int n){
            
          wX = walle.getX();
@@ -455,11 +467,14 @@ public class com extends javax.swing.JFrame {
          
          return false;
      }
+
+     // Metodo para restablecer wall-e     Nota: no funciona debidamente.
            public void restablecer(){
             walle.setLayout(null);
             com.walle.setLocation(0,0);
             jLabel5.add(walle);
     }
+    // Metodo para activar el robot dependiendo en la ubicacion que se encuentre.
     public static void activa() throws IOException{
         int buscan = buscarn();
          String imageName = null;
@@ -501,6 +516,8 @@ public class com extends javax.swing.JFrame {
             }
         }.start();
          }
+
+         // Metodo para avanzar roboto n veces.
     public static void avanza(int n){
         int busca = buscarn();
         switch(busca){
@@ -535,7 +552,7 @@ public class com extends javax.swing.JFrame {
     
     
    
-   
+            // compilar parser.java mandando file.txt
     public void compilar(File path){
             //Guarda el texto del cuadro antes de seguir, en caso de un error no entrara al if 
            
@@ -558,7 +575,7 @@ public class com extends javax.swing.JFrame {
                 }
              
         }
-   
+    // Busca el ficher.
     public File busca(){
          javax.swing.JFileChooser jF1= new javax.swing.JFileChooser();
         try{
@@ -574,6 +591,7 @@ public class com extends javax.swing.JFrame {
         }
          return null;
     }
+    // Metodo para abrir un archvio y escribirlo en la pantalla de edicion de codigo.
     private void abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirActionPerformed
         // TODO add your handling code here:
         file = busca();
@@ -604,17 +622,18 @@ String texto = "";
         system += "Se a cargado con exito "+ruta+"\n";
         pantalla.setText(system);
     }//GEN-LAST:event_abrirActionPerformed
-
+     
+     // Metodo para analizar archivo.
     private void analizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analizarActionPerformed
         compilar(file);
             
     }//GEN-LAST:event_analizarActionPerformed
-
+        // Metodo para salir del programa.
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
-
+            //metodo para ejecutar movimientos del robot segun las acciones semanticas.
     private void ejecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejecutarActionPerformed
         // TODO add your handling code here:
         restablecer();
@@ -625,7 +644,7 @@ String texto = "";
        
 
     }//GEN-LAST:event_ejecutarActionPerformed
-
+        // Metodo para Guardar archivo .txt
     private void sintaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sintaxActionPerformed
         // TODO add your handling code here:
         codigos = codigo.getText();
@@ -693,9 +712,22 @@ String texto = "";
 
         }
     }//GEN-LAST:event_sintaxActionPerformed
-
+        // Metodo para mostrar ayuda al usiario
+    
     private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null,""
+                + "AYUDA \n"
+                + "Verifique las siguientes indicaciones en el código introducido \n"
+                + "1. inicio (Inicio), tiene que escribirse con  la I mayúscula y lo sucesivo en minúscula es la palabra que inicializa el código.\n"
+                + "2. fin (Fin), tiene que escribirse con la F mayúscula y lo sucesivo en minúscula y esta es la instrucción que finaliza el código.\n"
+                + "                                                     En la  parte central pueden ir las siguientes instrucciones: \n"
+                + "3. Giro a la derecha (GDerecha;), tal como se muestra anteriormente: se escribe con G mayúscula y D mayúscula lo siguiente en minúscula seguido de un puto y coma. \n"
+                + "4. Avanza (Avanza (número);), se escribe de igual forma como se muestra: se escribe la con A con mayúscula lo siguiente en minúscula, a diferencia de los demás tiene \n"
+                + " paréntesis y un número en el cetro de ellos también finaliza con punto y coma. \n"
+                + "5. Giro a la Izquierda (GIzquierda;)  se escribe como se muestra anteriormente: con G mayúscula e I mayúscula lo siguiente en minúscula seguido de un puto y coma. \n "
+                + "6. (Activa;) tal como se muestra: con A mayúscula los siguiente en minúscula seguido de un puto y coma. \n"
+                + "");
         
     }//GEN-LAST:event_ayudaActionPerformed
 
